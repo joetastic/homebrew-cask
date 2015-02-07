@@ -7,7 +7,11 @@ class Hbc::CLI::Cleanup < Hbc::CLI::Base
   end
 
   def self.run(*_ignored)
-    new(HOMEBREW_CACHE_CASKS, Hbc.cleanup_outdated).cleanup!
+    default.cleanup!
+  end
+
+  def self.default
+    new(HOMEBREW_CACHE_CASKS, Hbc.cleanup_outdated)
   end
 
   attr_reader :cache_location, :cleanup_outdated
